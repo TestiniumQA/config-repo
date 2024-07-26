@@ -1,0 +1,25 @@
+server:
+  port: 8888 # Config Server'ın çalışacağı port
+
+spring:
+  application:
+    name: spring-cloud-config-server # Config Server'ın uygulama adı
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/kullaniciAdiniz/config-repo # Git deposunun URL'si
+          clone-on-start: true # Uygulama başlarken repoyu klonlar
+          search-paths: '{application}' # Uygulamaların konfigürasyon dosyalarını arama yolu
+          username: kullanıcıAdınız # Eğer private repo kullanıyorsanız kullanıcı adı
+          password: şifreniz # Eğer private repo kullanıyorsanız şifre
+
+logging:
+  level:
+    org.springframework: DEBUG # Spring loglama seviyesini DEBUG olarak ayarlama (isteğe bağlı)
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # Yönetim endpoint'lerini expose etme
